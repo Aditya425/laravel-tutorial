@@ -15,16 +15,15 @@ use App\Models\Post;
 */
 
 Route::get('/', function () {
-    return view('posts');
+    $posts = Post::all();
+    dd($posts);
+    return view('posts', [
+        "posts" => $posts
+    ]);
 });
 
 Route::get('post/{post}', function ($slug) {
-    $post = Post::find($slug);
-    // if (!file_exists($path = __DIR__ . "/../resources/posts/$slug.html";)) {
-    //     dd($slug);
-    // }
-    // $post = cache()->remember("posts.{$slug}", now()->addSeconds(5), fn() => file_get_contents($path));
-    // return view('post', [
-    //     "post" => $post
-    // ]);
+    return view("post", [
+        "post" => Post::find($slug)
+    ]);
 })->where('post', '[A-z_\-]+');

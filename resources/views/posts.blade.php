@@ -9,17 +9,11 @@
     <title>My Blog</title>
 </head>
 <body>
+    <?php foreach($posts as $post): ?>
     <article>
-        <h1><a href="/post/my-first-post">My First Post</a></h1>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit quasi dolore quis aliquam, nihil illum! Ut exercitationem dolore expedita veniam non repudiandae natus aliquam unde, laboriosam, iure iusto ratione pariatur?Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse, sit necessitatibus aut dolore amet magni cupiditate vero iste qui facere praesentium aliquam modi ea ratione voluptates, nam iusto officia! Architecto.</p>
+        <?= $post; ?>
     </article>
-    <article>
-        <h1><a href="/post/my-second-post">My Second Post</a></h1>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit quasi dolore quis aliquam, nihil illum! Ut exercitationem dolore expedita veniam non repudiandae natus aliquam unde, laboriosam, iure iusto ratione pariatur?Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse, sit necessitatibus aut dolore amet magni cupiditate vero iste qui facere praesentium aliquam modi ea ratione voluptates, nam iusto officia! Architecto.</p>
-    </article>
-    <article>
-        <h1><a href="/post/my-third-post">My Third Post</a></h1>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit quasi dolore quis aliquam, nihil illum! Ut exercitationem dolore expedita veniam non repudiandae natus aliquam unde, laboriosam, iure iusto ratione pariatur?Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse, sit necessitatibus aut dolore amet magni cupiditate vero iste qui facere praesentium aliquam modi ea ratione voluptates, nam iusto officia! Architecto.</p>
-    </article>
+
+    <?php endforeach; ?>
 </body>
 </html>
