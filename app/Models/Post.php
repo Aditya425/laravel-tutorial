@@ -7,10 +7,22 @@ use Illuminate\Support\Facades\File;
 
 class Post
 {
+    public $title;
+    public $excerpt;
+    public $date;
+    public $body;
+
+    public function __construct($t, $e, $d, $b)
+    {
+        $this->title = $t;
+        $this->excerpt = $e;
+        $this->date = $d;
+        $this->body = $b;
+    }
     public static function all() {
         $files = File::files(resource_path('posts/'));
-        return array_map(function () {
-            return "foo";
+        return array_map(function ($file) {
+            return $file->getContents();
         }, $files);
     }
     public static function find($slug)
