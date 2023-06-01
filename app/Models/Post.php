@@ -24,13 +24,14 @@ class Post
     }
     public static function all()
     {
+        return cache()->rememberForever('posts.all', fu)
         return collect(File::files(resource_path('posts/')))
             ->map(fn($file) => YamlFrontMatter::parseFile($file))
-            ->map(fn($doc) => new Post($doc->title, $doc->excerpt, $doc->date, $doc->body(), $doc->slug));
+            ->map(fn($doc) => new Post($doc->title, $doc->excerpt, $doc->date, $doc->body(), $doc->slug))
+            ->sortByDesc('date');
     }
     public static function find($slug)
     {
-        $posts = static::all();
-        $post = $posts->firstWHere('slug', $slug);
+        return static::all()->firstWhere('slug', $slug);
     }
 }
