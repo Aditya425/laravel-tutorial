@@ -24,11 +24,12 @@ class Post
     }
     public static function all()
     {
-        return cache()->rememberForever('posts.all', fu)
-        return collect(File::files(resource_path('posts/')))
-            ->map(fn($file) => YamlFrontMatter::parseFile($file))
-            ->map(fn($doc) => new Post($doc->title, $doc->excerpt, $doc->date, $doc->body(), $doc->slug))
-            ->sortByDesc('date');
+        return cache()->rememberForever('posts.all', function () {
+            return collect(File::files(resource_path('posts/')))
+                ->map(fn($file) => YamlFrontMatter::parseFile($file))
+                ->map(fn($doc) => new Post($doc->title, $doc->excerpt, $doc->date, $doc->body(), $doc->slug))
+                ->sortByDesc('date');
+        });
     }
     public static function find($slug)
     {
